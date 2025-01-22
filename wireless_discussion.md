@@ -36,15 +36,15 @@
 ## Discussion #2 - Wednesday, January 22, 2025 at 15:00 UTC
 
 ### Invitees and Attendees
-- [ ] Adrian Chadd
-- [ ] Alice Sowerby
+- [X] Adrian Chadd
+- [X] Alice Sowerby
 - [ ] Alvin Chen
-- [ ] Bjoern Zeeb
-- [ ] Cy Shubert
-- [ ] Ed Maste
-- [ ] Joe Mingrone
-- [ ] Li-Wen Hsu
-- [ ] Tom Jones
+- [X] Bjoern Zeeb
+- [X] Cy Shubert
+- [X] Ed Maste
+- [X] Joe Mingrone
+- [X] Li-Wen Hsu
+- [X] Tom Jones
 
 ### Updates
 
@@ -75,7 +75,8 @@
       * Remove global TX lock in net80211, refactor seqno allocation, push it into driver
 
 - Alice: 
-Ed suggested that I could attend this call as there was a wish for some input on how to collate and organise work going forward. I've been doing something similar with the cloud native (OCI) group and can potentially show that on the call by way of example. Otherwise, as this is a technical call I wouldn't expect to be a regular attendee. 
+https://github.com/FreeBSDFoundation/proj-laptop Ed suggested that I could attend this call as there was a wish for some input on how to collate and organise work going forward. I've been doing something similar with the cloud native (OCI) group and can potentially show that on the call by way of example. Otherwise, as this is a technical call I wouldn't expect to be a regular attendee. 
+
 - Alvin
 
 - Bjoern
@@ -83,6 +84,23 @@ Ed suggested that I could attend this call as there was a wish for some input on
 - Cy
 
 - Tom
+    - working on iwx port from openbsd incorporating changes from Future Crew.
+    - ht/20 is working
+    - 80211abg is working
+    - firmware crashes are the main issue right now for wider testing
+
+- Li-Wen
+    * Still trying to push Realtek & Mediatek
+        * share spec with us, even under NDA
+        * officially permit their engineers answer our questions
+        * hope to have response after Lunar New Year
+        * if possilbe, have the Linux driver release under dual license
+    * It's hard for Dell to open their wifi work currently, due to license issue and needs to clean up.
+    * The intern working on syzkaller/net80211 is implementing some necessary commands in netlink (inject frame, join IBSS, etc.)
+    * Any project ideas for a new graduate who has experience with wtap(4)?
+        * e.g. 802.11 k/v/r ?
+        * setting up testbed in Kitchener?
+        * radiotap for rtwan(4) (HT/VHT fields)
 
 ### Topic for Discussion: Porting Linux wireless drivers to native FreeBSD drivers.
 
@@ -116,3 +134,11 @@ Some useful places to start:
 ### Other Noteworthy Items
 
 * jsm's mt7601 11n usb driver, in review
+
+
+### (Todo - 22/Jan/2024)
+
+* [adrian] - i can prio the seqno refactoring higher to remove the net80211 tx locking, and allow tx queuing / delayed transmitting stuff in net80211; would unblock linux stuff too
+* [adrian] - rtwn radiotap HT/VHT field support?
+* [adrian] - yes ok I will go through the old wifi PRs in Jan/Feb
+* [adrian] - braindump for waterfall towards some concrete goals, eg 11ac, 11ax, etc
