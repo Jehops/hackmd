@@ -50,6 +50,32 @@
 
 - Adrian
 
+  * rtwn(4) fixes and 11ac support
+  * what's currently left for review
+      * RTL8192EU fixes
+      * AMRR clean-up
+  * what's coming up for review
+      * transmit rate refactoring
+      * MVP 11ac rate control
+      * rtwn(4) 11ac TX
+  * what needs some discussion
+      * ioctl ABI breakage before stable/15
+      * get ready for 256/384 bit encryption keys, AES-GCMP 128/256 bit support, AES-CCMP 256 bit support
+      * proper TX rates in ioctl/ifconfig for 11n/11ac
+      * any extra VHT information we want available to userland
+  * FC's iwx code
+      * I've put it in github (https://github.com/erikarn/iwx)
+      * works on my AX210 wifi
+      * some initial comments on it
+  * What I'm working towards:
+      * better net80211 rate control (port ath_rate_sample, openbsd's rate control, fix up APIs, etc)
+      * MFP support (management frame protection)
+      * WPA3-SAE support (requires MFP, needed for 6GHz)
+      * channel representation cleanup
+      * Remove global TX lock in net80211, refactor seqno allocation, push it into driver
+
+- Alice: 
+Ed suggested that I could attend this call as there was a wish for some input on how to collate and organise work going forward. I've been doing something similar with the cloud native (OCI) group and can potentially show that on the call by way of example. Otherwise, as this is a technical call I wouldn't expect to be a regular attendee. 
 - Alvin
 
 - Bjoern
@@ -89,3 +115,4 @@ Some useful places to start:
 
 ### Other Noteworthy Items
 
+* jsm's mt7601 11n usb driver, in review
