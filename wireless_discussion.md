@@ -158,79 +158,79 @@ Some useful places to start:
 - Adrian
     - Status of self-assigned ToDos?
     - Slow progress on #1
-    - It would be really good getting eyballs on the issue where kernel panics from X are not viewable.
-    - Ed: This used to work, but it's a regression in a drm update.  We've had Mitchell Horne tring to get hrs's debug into the tree which would allow us to debug the crash and also use it to debug the debugger.  It's a tricky situation to resolve, but it's valid.
+    - It would be really good getting eyballs on the issue where kernel panics
+      from X are not viewable.
+    - Ed: This used to work, but it's a regression in a drm update.  We've had
+      Mitchell Horne tring to get hrs's USB debug into the tree which would
+      allow us to debug the crash and also use it to debug the debugger.  It's a
+      valid, but tricky situation to resolve.
     - Tom: Mitchell says it didn't work.
-    - Ed: On specific hardware on specific hardware.  If I can find some model to demo it works on Windows or Linux and use it to debug the VT switching issue.
+    - Ed: On specific hardware it does.  If we can find some model to demo that
+      it works on Windows or Linux and use it to debug the VT switching issue,
+      that would be good.
     - Tom: I stared setting this up last week.
-    - bz: Where is the driver.
-    - Tom: I'll send you a link.
     - Adrian: I would also like to have kernel crashing during VT switching.
     - bz: I know it works on my laptop b/c I tried hrs's patch before.
-    - Tom: I would like if we could get suspend/resume in quemu.  Right now it doesn't work very well.
+    - Tom: I would like it if we could get suspend/resume in quemu.  Right now
+      it doesn't work very well.
     - bz: TODO: I can try it out in the next days.
-    - Ed: If we can at least have it in the tree and if bz has hardware that's known to work.... It's been a long time where it's been in an uncertain state.
+    - Ed: If we can at least have it in the tree and if bz has hardware that's
+      known to work.... It's been a long time where it's been in an uncertain
+      state.
 
-Mediatek driver for the mt7601 USB landed a few weeks.
-fwget was the last roadblock.
+    - Mediatek driver for the mt7601 USB landed a few weeks.  fwget was the last
+      roadblock.
 
-I will be working on the sequence handling next to help unblock bjoern with that.
+    - I will be working on the sequence handling next to help unblock Bjoern.
 
 - Alvin
 
 - Bjoern
-    - Plan for old wireless PRs?
-Linimon has started to clean them up. Adrian picked some up as well.  The meta-pr is helpful to get the bigger picture.
+    - Plan for old wireless PRs?  Mark Linimon has started to clean them up.  Adrian
+      picked some up as well.  The meta-pr is helpful to get the bigger picture.
 
-    - More discussion about porting Linux drivers to native drivers?
-    
-    Trying to change the datapath is somsething we didn't try.  It would be interesting to see if someone could do a project to investigate.
-    
-    Adrian: I wrote a shim layer.. you can write an intermediarry layer and they don't want to add accessor methods becasuse it was viewed as extranious overhead.  Turing skbs in and out of mbufs is really hard.  There are neough weird semantic diffs.... 
-    
-    
+    - More discussion about porting Linux drivers to native drivers?  Trying to
+      change the datapath is somsething we didn't try.  It would be interesting
+      to see if someone could do a project to investigate.
+
+      Adrian: I wrote a shim layer.. you can write an intermediary layer.  The
+      Linux devs don't want to add accessor methods becasuse it was viewed as
+      extranious overhead.  Turing skbs in and out of mbufs is really hard.
+      There are enough weird semantic diffs....???
     - Updates on jsm's mt7601 11n usb driver, in review?
-        - I just got involved w/ FW and fwget
 
-    - Roaming question?
+    - Roaming question?  I've been using my own code.. it won't roam.
     
-    I've been using my own code.. it won't roam.
+      Adrian: There are a bunch of different paths to make it work. You have to
+      do a background scan.  A lot of plumbing has to be done.  I got that all
+      mostly workign a while ago.  The second part.  Suupplicant has to do
+      preauth.  Depending on which way you do roaming...???
     
-    Adrian: There are a bunch of different paths to make it work. You have to do a background scan.  A lot of plumbing has to be done.  I got that all mostly work a while ago.  The second part.  Su‽upplicant has to do preauth.  Depending on which way you do roaming...???
+      I don't think it's too hard to do dumb roaming....
     
-    I don't think it's too hard to do dumb roaming....
-    
-    Adrian TODO: create a wiki page for roaming.
-    
-    bz: 
+      Adrian TODO: Create a wiki page for roaming (Created a skeleton page
+      during the meeting.)
     
     - WTAP question?
     
-    bz: Can I just go through these reviews and close them.
+      bz: Can I just go through these reviews and close them.
     
-    li-wen: Student wanted to return for working holiday, but he can't come to Canada.
+      Li-Wen: Student wanted to return for a Canadian working holiday, but he
+      can't because of changes to Canadian immigration.  He'll stay with his job
+      at Canonical.
     
-    bz: Can he take what he has done in the past and put it in?
+      bz: Do you mind if I do that work.
     
-    li-wen TODO find time to work on that.
-    
-    bz: Do you mind if I do that work.
-    
-    li-wen: if you have time, that would be great.
-    
-    
-    
+      Li-Wen: If you have time, that would be great.
     
     - Development progress?
-    
-    rtw89 still has problems with crypto. I will probably tell people...
 
 - Cy
 
 - Tom
-    - Almost ready for review.
+    - My iwx work is almost ready for review.
     - Not getting some rates as Adrian.
-    - 
-TODO: Adrian to send list of devices to Tom
+    TODO: Adrian to send list of devices to Tom.
+
 - Li-Wen
     - Talking to Mediatek friend to see if we can get datasheet of MT7922 (wifi6) and MT7925 (wifi7) used in Framework Laptop/Desktop AMD models.
