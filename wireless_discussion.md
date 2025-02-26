@@ -143,29 +143,94 @@ Some useful places to start:
 ## Discussion #3 - Wednesday, February 22, 2025 at 16:00 UTC
 
 ### Attendees
-- [] Adrian Chadd
-- [] Alice Sowerby
-- [] Alvin Chen
-- [] Bjoern Zeeb
-- [] Cy Shubert
-- [] Ed Maste
-- [] Joe Mingrone
-- [] Li-Wen Hsu
-- [] Tom Jones
+- [x] Adrian Chadd
+- [ ] Alice Sowerby
+- [ ] Alvin Chen
+- [x] Bjoern Zeeb
+- [ ] Cy Shubert
+- [x] Ed Maste
+- [x] Joe Mingrone
+- [x] Li-Wen Hsu
+- [x] Tom Jones
 
 ### Comments and Updates
 
 - Adrian
     - Status of self-assigned ToDos?
+    - Slow progress on #1
+    - It would be really good getting eyballs on the issue where kernel panics from X are not viewable.
+    - Ed: This used to work, but it's a regression in a drm update.  We've had Mitchell Horne tring to get hrs's debug into the tree which would allow us to debug the crash and also use it to debug the debugger.  It's a tricky situation to resolve, but it's valid.
+    - Tom: Mitchell says it didn't work.
+    - Ed: On specific hardware on specific hardware.  If I can find some model to demo it works on Windows or Linux and use it to debug the VT switching issue.
+    - Tom: I stared setting this up last week.
+    - bz: Where is the driver.
+    - Tom: I'll send you a link.
+    - Adrian: I would also like to have kernel crashing during VT switching.
+    - bz: I know it works on my laptop b/c I tried hrs's patch before.
+    - Tom: I would like if we could get suspend/resume in quemu.  Right now it doesn't work very well.
+    - bz: TODO: I can try it out in the next days.
+    - Ed: If we can at least have it in the tree and if bz has hardware that's known to work.... It's been a long time where it's been in an uncertain state.
+
+Mediatek driver for the mt7601 USB landed a few weeks.
+fwget was the last roadblock.
+
+I will be working on the sequence handling next to help unblock bjoern with that.
 
 - Alvin
 
 - Bjoern
     - Plan for old wireless PRs?
+Linimon has started to clean them up. Adrian picked some up as well.  The meta-pr is helpful to get the bigger picture.
+
     - More discussion about porting Linux drivers to native drivers?
+    
+    Trying to change the datapath is somsething we didn't try.  It would be interesting to see if someone could do a project to investigate.
+    
+    Adrian: I wrote a shim layer.. you can write an intermediarry layer and they don't want to add accessor methods becasuse it was viewed as extranious overhead.  Turing skbs in and out of mbufs is really hard.  There are neough weird semantic diffs.... 
+    
+    
     - Updates on jsm's mt7601 11n usb driver, in review?
+        - I just got involved w/ FW and fwget
+
+    - Roaming question?
+    
+    I've been using my own code.. it won't roam.
+    
+    Adrian: There are a bunch of different paths to make it work. You have to do a background scan.  A lot of plumbing has to be done.  I got that all mostly work a while ago.  The second part.  Su‽upplicant has to do preauth.  Depending on which way you do roaming...???
+    
+    I don't think it's too hard to do dumb roaming....
+    
+    Adrian TODO: create a wiki page for roaming.
+    
+    bz: 
+    
+    - WTAP question?
+    
+    bz: Can I just go through these reviews and close them.
+    
+    li-wen: Student wanted to return for working holiday, but he can't come to Canada.
+    
+    bz: Can he take what he has done in the past and put it in?
+    
+    li-wen TODO find time to work on that.
+    
+    bz: Do you mind if I do that work.
+    
+    li-wen: if you have time, that would be great.
+    
+    
+    
+    
+    - Development progress?
+    
+    rtw89 still has problems with crypto. I will probably tell people...
 
 - Cy
 
 - Tom
-    - Details of the progress you recently shared about your iwx work?
+    - Almost ready for review.
+    - Not getting some rates as Adrian.
+    - 
+TODO: Adrian to send list of devices to Tom
+- Li-Wen
+    - Talking to Mediatek friend to see if we can get datasheet of MT7922 (wifi6) and MT7925 (wifi7) used in Framework Laptop/Desktop AMD models.
