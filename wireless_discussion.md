@@ -2,7 +2,7 @@
 
 ## Discussion #1 - Tuesday, December 3, 2024 at 20:00 UTC
 
-### Invitees and Attendees
+### Attendees
 - [X] Adrian Chadd
 - [X] Bjoern Zeeb
 - [X] Ed Maste
@@ -35,7 +35,7 @@
 
 ## Discussion #2 - Wednesday, January 22, 2025 at 16:00 UTC
 
-### Invitees and Attendees
+### Attendees
 - [X] Adrian Chadd
 - [X] Alice Sowerby
 - [ ] Alvin Chen
@@ -142,7 +142,7 @@ Some useful places to start:
 
 ## Discussion #3 - Wednesday, February 22, 2025 at 16:00 UTC
 
-### Invitees and Attendees
+### Attendees
 - [] Adrian Chadd
 - [] Alice Sowerby
 - [] Alvin Chen
