@@ -33,7 +33,7 @@
     aligning with our .0 releases.  However, porting and updating both the Linux
     layer and the FreeBSD ABI/KBI is too challenging.
 
-## Discussion #2 - Wednesday, January 22, 2025 at 15:00 UTC
+## Discussion #2 - Wednesday, January 22, 2025 at 16:00 UTC
 
 ### Invitees and Attendees
 - [X] Adrian Chadd
@@ -46,7 +46,7 @@
 - [X] Li-Wen Hsu
 - [X] Tom Jones
 
-### Updates
+### Comments/Updates
 
 - Adrian
 
@@ -73,9 +73,14 @@
       * WPA3-SAE support (requires MFP, needed for 6GHz)
       * channel representation cleanup
       * Remove global TX lock in net80211, refactor seqno allocation, push it into driver
+  * ToDos
+    * i can prio the seqno refactoring higher to remove the net80211 tx locking, and allow tx queuing / delayed transmitting stuff in net80211; would unblock linux stuff too
+    * rtwn radiotap HT/VHT field support?
+    * yes ok I will go through the old wifi PRs in Jan/Feb
+    * braindump for waterfall towards some concrete goals, eg 11ac, 11ax, etc
 
-- Alice: 
-https://github.com/FreeBSDFoundation/proj-laptop Ed suggested that I could attend this call as there was a wish for some input on how to collate and organise work going forward. I've been doing something similar with the cloud native (OCI) group and can potentially show that on the call by way of example. Otherwise, as this is a technical call I wouldn't expect to be a regular attendee. 
+- Alice:
+https://github.com/FreeBSDFoundation/proj-laptop Ed suggested that I could attend this call as there was a wish for some input on how to collate and organise work going forward. I've been doing something similar with the cloud native (OCI) group and can potentially show that on the call by way of example. Otherwise, as this is a technical call I wouldn't expect to be a regular attendee.
 
 - Alvin
 
@@ -135,10 +140,32 @@ Some useful places to start:
 
 * jsm's mt7601 11n usb driver, in review
 
+## Discussion #3 - Wednesday, February 22, 2025 at 16:00 UTC
 
-### (Todo - 22/Jan/2024)
+### Invitees and Attendees
+- [] Adrian Chadd
+- [] Alice Sowerby
+- [] Alvin Chen
+- [] Bjoern Zeeb
+- [] Cy Shubert
+- [] Ed Maste
+- [] Joe Mingrone
+- [] Li-Wen Hsu
+- [] Tom Jones
 
-* [adrian] - i can prio the seqno refactoring higher to remove the net80211 tx locking, and allow tx queuing / delayed transmitting stuff in net80211; would unblock linux stuff too
-* [adrian] - rtwn radiotap HT/VHT field support?
-* [adrian] - yes ok I will go through the old wifi PRs in Jan/Feb
-* [adrian] - braindump for waterfall towards some concrete goals, eg 11ac, 11ax, etc
+### Comments and Updates
+
+- Adrian
+    - Status of self-assigned ToDos?
+
+- Alvin
+
+- Bjoern
+    - Plan for old wireless PRs?
+    - More discussion about porting Linux drivers to native drivers?
+    - Updates on jsm's mt7601 11n usb driver, in review?
+
+- Cy
+
+- Tom
+    - Details of the progress you recently shared about your iwx work?
