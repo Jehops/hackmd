@@ -178,7 +178,7 @@ Some useful places to start:
       known to work.... It's been a long time where it's been in an uncertain
       state.
 
-    - Mediatek driver for the mt7601 USB landed a few weeks.  fwget was the last
+    - Mediatek driver for the mt7601 USB landed a few weeks ago.  fwget was the last
       roadblock.
 
     - I will be working on the sequence handling next to help unblock Bjoern.
@@ -203,7 +203,7 @@ Some useful places to start:
     
       Adrian: There are a bunch of different paths to make it work. You have to
       do a background scan.  A lot of plumbing has to be done.  I got that all
-      mostly workign a while ago.  The second part.  Suupplicant has to do
+      mostly working a while ago.  The second part: supplicant has to do
       preauth.  Depending on which way you do roaming...???
     
       I don't think it's too hard to do dumb roaming....
@@ -229,7 +229,7 @@ Some useful places to start:
 
 - Tom
     - My iwx work is almost ready for review.
-    - Not getting some rates as Adrian.
+    - Not getting same rates as Adrian.
     TODO: Adrian to send list of devices to Tom.
 
 - Li-Wen
