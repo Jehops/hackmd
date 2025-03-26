@@ -183,8 +183,6 @@ Some useful places to start:
 
     - I will be working on the sequence handling next to help unblock Bjoern.
 
-- Alvin
-
 - Bjoern
     - Plan for old wireless PRs?  Mark Linimon has started to clean them up.  Adrian
       picked some up as well.  The meta-pr is helpful to get the bigger picture.
@@ -225,12 +223,33 @@ Some useful places to start:
     
     - Development progress?
 
-- Cy
-
 - Tom
     - My iwx work is almost ready for review.
     - Not getting same rates as Adrian.
     TODO: Adrian to send list of devices to Tom.
 
 - Li-Wen
-    - Talking to Mediatek friend to see if we can get datasheet of MT7922 (wifi6) and MT7925 (wifi7) used in Framework Laptop/Desktop AMD models.
+    - Talking to Mediatek friend to see if we can get datasheet of MT7922
+      (wifi6) and MT7925 (wifi7) used in Framework Laptop/Desktop AMD models.
+
+## Discussion #4 - Wednesday, March 26, 2025 at 15:00 UTC
+
+- [ ] Adrian Chadd
+- [ ] Alice Sowerby
+- [ ] Alvin Chen
+- [ ] Bjoern Zeeb
+- [ ] Cy Shubert
+- [ ] Ed Maste
+- [ ] Joe Mingrone
+- [ ] Li-Wen Hsu
+- [ ] Tom Jones
+
+### Comments and Updates
+
+- Adrian
+
+- Bjoern
+
+- Cy
+
+- Tom
