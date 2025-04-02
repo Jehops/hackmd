@@ -234,22 +234,60 @@ Some useful places to start:
 
 ## Discussion #4 - Wednesday, March 26, 2025 at 15:00 UTC
 
-- [ ] Adrian Chadd
-- [ ] Alice Sowerby
-- [ ] Alvin Chen
-- [ ] Bjoern Zeeb
-- [ ] Cy Shubert
-- [ ] Ed Maste
-- [ ] Joe Mingrone
-- [ ] Li-Wen Hsu
-- [ ] Tom Jones
+- [x] Adrian Chadd
+- [x] Alvin Chen
+- [x] Bjoern Zeeb
+- [x] Cy Shubert
+- [x] Ed Maste
+- [x] Joe Mingrone
+- [x] Li-Wen Hsu
+- [x] Tom Jones
 
 ### Comments and Updates
 
 - Adrian
+    - Fixed compilation issue with mtw(4)
+    - Working through the GCMP crypto support code reviews and landing what I can
+    - Working on CCMP/GCMP crypto refactoring
+    - Verified 256-bit CCMP and GCMP crypto locally; interops with Linux fine
+    - Various other small code fixes for things that have shown up in ath(4) AP / STA testing
+    - Still working towards getting sequence number refactoring done and removing the TX lock, which should improve performance and also make locking easier for drivers / LinuxKPI.
+    - The medium term goal is still 802.11ac / MFP (management frame protection); longer term goal is still WPA3/SAE and channel representation / rate representation cleanups for 802.11ax.
 
 - Bjoern
+
+  - LinuxKPI malloc changes to avoid problems with contiguous memory
+    regions in progress and pushed;  rtw88 is the best test platform
+  - The drm-kmod, really a REDZONE oversight 8 months ago, took time
+    off the plate.
+  - jsm done mtw firmware port; fwget USB support is still pending
+  - Updated the wifi-firmware ports also for iwx but also turning
+    hw_crypto/HT/VHT on by default for iwlwifi AXxxx and BExxx chipets.
+  - Announced that in-tree firmware will go away in April
+  - Started work on suspend/resume for LinuxKPI based drivers
+  - Started catching up with TKIP/WEP but also for newer cipher suites
+    for LinuxKPI based drivers
+  - Reviews for Adrian
+  - Dealt with a crypto bug which slipped through review and MFCed
+  - Updated iwlwifi to no longer ask people to submit to but check a
+    PR about TXQ problems before the next release ships with it
+  - TODO: give iwx a try
 
 - Cy
 
 - Tom
+    - iwx is in review: https://reviews.freebsd.org/D49259
+
+- Alvin
+
+- Li-Wen
+    - Mediatek team responsible for MT79xx refused our request of accessing the datasheet because their resource is only for the important customers.
+        - Trying to ask help from their customers, AMD (via Framework)
+    - Realtek is also still WIP, but mainly for wired NIC (5G NIC is used in Framework Desktop)
+        - are we interested (and have time) on Realtek's wireless product?
+    - Testing AX210 with iwlwifi(4) in -CURRENT on my Framework (intel 13th gen) and Sheng-Yi (aokblast@)'s intel Ultra 1 during 202503 Tokyo hackathon
+        - the same chip AX210
+        - mine Cannot assoc to 5GHz ap, got ng/na at best
+        - Sheng-Yi can assoc to 5GHz ap, but only once after boot
+        - some error/crash in firmware
+        - will analysis more and provide useful information later
