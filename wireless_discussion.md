@@ -198,29 +198,29 @@ Some useful places to start:
     - Updates on jsm's mt7601 11n usb driver, in review?
 
     - Roaming question?  I've been using my own code.. it won't roam.
-    
+
       Adrian: There are a bunch of different paths to make it work. You have to
       do a background scan.  A lot of plumbing has to be done.  I got that all
       mostly working a while ago.  The second part: supplicant has to do
       preauth.  Depending on which way you do roaming...???
-    
+
       I don't think it's too hard to do dumb roaming....
-    
+
       Adrian TODO: Create a wiki page for roaming (Created a skeleton page
       during the meeting.)
-    
+
     - WTAP question?
-    
+
       bz: Can I just go through these reviews and close them.
-    
+
       Li-Wen: Student wanted to return for a Canadian working holiday, but he
       can't because of changes to Canadian immigration.  He'll stay with his job
       at Canonical.
-    
+
       bz: Do you mind if I do that work.
-    
+
       Li-Wen: If you have time, that would be great.
-    
+
     - Development progress?
 
 - Tom
@@ -275,6 +275,8 @@ Some useful places to start:
 
 - Cy
 
+Fixed WAP_Supplicant for 13/14.
+
 - Tom
     - iwx is in review: https://reviews.freebsd.org/D49259
 
@@ -291,3 +293,30 @@ Some useful places to start:
         - Sheng-Yi can assoc to 5GHz ap, but only once after boot
         - some error/crash in firmware
         - will analysis more and provide useful information later
+
+## Discussion #5 - Wednesday, April 30, 2025 at 15:00 UTC
+
+Are there any objections to making the discussion notes public?
+
+- [ ] Adrian Chadd
+- [ ] Alvin Chen
+- [ ] Bjoern Zeeb
+- [ ] Cy Shubert
+- [ ] Ed Maste
+- [ ] Joe Mingrone
+- [ ] Li-Wen Hsu
+- [ ] Tom Jones
+
+### Comments and Updates
+
+- Adrian
+
+- Bjoern
+
+- Cy
+
+- Tom
+
+- Alvin
+
+- Li-Wen
