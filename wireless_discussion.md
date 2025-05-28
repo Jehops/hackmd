@@ -198,29 +198,29 @@ Some useful places to start:
     - Updates on jsm's mt7601 11n usb driver, in review?
 
     - Roaming question?  I've been using my own code.. it won't roam.
-    
+
       Adrian: There are a bunch of different paths to make it work. You have to
       do a background scan.  A lot of plumbing has to be done.  I got that all
       mostly working a while ago.  The second part: supplicant has to do
       preauth.  Depending on which way you do roaming...???
-    
+
       I don't think it's too hard to do dumb roaming....
-    
+
       Adrian TODO: Create a wiki page for roaming (Created a skeleton page
       during the meeting.)
-    
+
     - WTAP question?
-    
+
       bz: Can I just go through these reviews and close them.
-    
+
       Li-Wen: Student wanted to return for a Canadian working holiday, but he
       can't because of changes to Canadian immigration.  He'll stay with his job
       at Canonical.
-    
+
       bz: Do you mind if I do that work.
-    
+
       Li-Wen: If you have time, that would be great.
-    
+
     - Development progress?
 
 - Tom
@@ -275,6 +275,8 @@ Some useful places to start:
 
 - Cy
 
+    - Fixed WAP_Supplicant for 13/14.
+
 - Tom
     - iwx is in review: https://reviews.freebsd.org/D49259
 
@@ -291,3 +293,219 @@ Some useful places to start:
         - Sheng-Yi can assoc to 5GHz ap, but only once after boot
         - some error/crash in firmware
         - will analysis more and provide useful information later
+
+## Discussion #5 - Wednesday, April 30, 2025 at 15:00 UTC
+
+- [ ] Adrian Chadd
+- [ ] Alvin Chen
+- [X] Bjoern Zeeb
+- [X] Cy Shubert
+- [X] Ed Maste
+- [X] Joe Mingrone
+- [X] Li-Wen Hsu
+- [X] Tom Jones
+
+### Action Items
+
+- Bjoern (will backup from others) will start communication the KBI plan through
+  15/16.  We need to keep Adrian in the loop.
+
+- Tom, as part of his Wi-Fi documentation efforts, to look at adding Wi-Fi
+  content to the Handbook.
+
+### Comments and Updates
+
+- Bjoern
+
+    Most of my updates are the wireless mailing list.  Basically for 14.3, I've
+    merged everything I can now.  I had to merge three changes from Adrian.
+    That's one of the open things for this meeting, i.e.. to see how we deal
+    with that because Adrian doesn't MFC, and after a year or so you get stuck
+    on changes.
+
+    Other that that, it's moving things along for me trying to fix anything that
+    comes up with iwlwifi and dealing with technical debt in net802.11 like race
+    conditions and lock.  A bunch of PRs can in last night and I try to deal
+    with them as soon as possible to keep things moving forward.  iwlwifi also
+    needs PCI changes, which I need to do for LinuxKPI, then I can work on
+    MediaTek.
+
+    The other big topic is how to deal with 15 and 16. We'll likely change
+    things in incompatible ways and I'd like to have a strategy for 15 and 16.
+    Otherwise people will be stuck with what we have now for a really long time.
+
+    Tom: What about the expected breaking changes for 15.0?n
+
+    Bjoern: If we do the channel and method cleanups and locking changes it will
+    affect all the drivers.  Tom: So we'll basically be stuck with 14.3
+    performance and standards in the 15 branch and 16 will get all this stuff?
+
+    Bjoern: I don't know.  This is my question.  Unless we say 15 WiFi is just
+    not going to be stable with respect to WiFi.  If you look like what Sam did
+    15-20 years ago, it was massive changes and they basically broke everything
+    and then in half a year, the next big block of changes came in.  I can't
+    deal with more stuff in LinuxKPI now.  I need to start fixing that 802.11
+    and getting things into there.  If you want to add 11ac you have to extend
+    the structures and other stuff, which is mostly fine I guess, but KPIs will
+    change that will affect drivers.  I don't know the solution and I don't know
+    what people think about it because if we can declare 15 as unstable then at
+    least 15 and 16 can move forward, and 14 would be kind of at the point where
+    it is now plus minor bug fixes improvements that we can do. But keeping
+    completely at this level is, I think, way too long, because that's gonna be
+    another two and a half years before 16.
+
+    Tom: But we do have A/C now in 15.  We do have drivers now, which will do
+    almost a gigabit of traffic.  The only things we need are WPA3 and
+    everything to support it.  That's the solution to the "this network doesn't
+    work at all with FreeBSD" problem.
+
+    Bjoern: How so?
+
+    Tom: We've had reports that people have had to downgrade the security of
+    their AP to use FreeBSD WiFi because we don't have WPA3.  But that's the
+    only thing I've heard of where there is a hard break where things just don't
+    work at all.  People aren't really complaining about it yet.
+
+    Bjoern: We, as the WiFi group have to make a decision at some point.
+
+    Tom: I think we would probably want bigger buy in from Freebsd developers,
+    at least because we're going to get all of the fallout right if we say that
+    Wi-fi and 15 is not going to be binary compatible.  So there will be
+    breakages.  People might just make jokes and say, Well, Wi-Fi, being
+    unstable is better than they're not being Wi-Fi like, I don't know how great
+    a response we get from anyone, but at least there would be progress right,
+    then, no one could say, we're not making things.  We're not working on
+    it. If we're breaking it, we're definitely working on it.
+
+    Bjoern: And we will definitely break things, because all the old drivers, if
+    you go and look, that's the next question gonna be, how many of them are we
+    gonna carry forward because we still have abg drivers, you know, don't even
+    do anything. And I understand why we still have them.  The question is, for
+    how long are we gonna still have them?  And who can test them?  Because
+    testing 40 different devices, I can tell you, is going to take an awful lot
+    of time, and we need to have our users do that or eventually say, okay, it's
+    broken. We'll fix it if someone comes up and says, hey, it's broken. I still
+    have a device running or something, or they come up because even between 3
+    of us or 4 of us, we can't do that.  I can't see us doing it. Let's put it
+    that way.
+
+    Tom: Yeah, I agree.  It's difficult to get the diversity of hardware in a
+    way you can test it as well. But we could do a best effort.
+
+    Bjoern: What I've done for rtw88/89 is, I've loaded the driver I configured
+    Wi-Fi to make sure it can pass packets. I made sure, multicast works,
+    broadcast works...
+
+    Tom Jones: We probably need to ask Adrian. Adrian might say that breaking
+    things is fine.
+
+    Bjoern: And the next question is, do we actually have out of tree Wi-Fi
+    drivers, apart from the one that Adrian started 10 years ago.
+
+    Ed: And do we care?  We already don't have a stable KBI in point releases.
+    We pretend we do, but we haven't for year.  My view is that we have to be
+    transparent about what we're doing.  I can't imagine anyone is going to say
+    they would rather have a fixed, broken KBI than working Wi-Fi throughout the
+    course of the 15.
+
+    Bjoern: I agree with you and I would love to keep the momentum going and
+    move forward.
+
+    Ed: Oh, I'm sure someone is going to say I have a 15 year old whatever-card
+    that I rely on, but I'm gonna buy a small collection of the the $15 TP-Link
+    USB dongles, and just, I'll mail one to everyone who complains about all
+    hardware, not working. :)
+
+    Joe: A dongle for you, and a dongle for you, and a dongle for everyone!
+
+    Bjoern: Yeah, okay. So in theory, we should communicate this, we should just
+    go ahead and do this.
+
+    Ed: I think so.
+
+    Tom: Yeah, yeah, I think we we communicate it.
+
+- Tom
+
+    Tom: I had to check when we last met and so, since we last met, I landed
+    iwx, which I did right at the start of April.
+
+    There was some fallout around the build which I fixed, and I think from that
+    I learned that I wasn't getting any build failures from anything.  So that
+    was that was nice.  It means I haven't broken the build for a long time.
+    Also I broke the build, and I didn't know about it, and nobody told me.
+
+    I spent a lot of time writing a series of introductory articles on how to do
+    Wi-Fi development.
+
+    I'll be writing debugging stuff as I try and debug some of the outstanding
+    stuff with iwx like it not always associating very well.  I just need to do
+    more testing. And it's quite opaque what's going on.  I've also not looked
+    at it for a while for because I've been doing other things.
+
+    I think, going into May. I'm gonna get some semi automated regressions
+    together with the machines I have, so that we have more confidence about
+    drive by commits from people.  What we would be able to do is get somebody
+    with a Wi-Fi change to run a script for us and self report.
+
+    Bjoern: Are you going to look at the Handbook as well?
+
+    Tom: I can, what what needs to be in the Handbook?
+
+    Bjoern: How to use Wi-Fi.
+
+    Tom: Yeah, I can look at a handbook. I'll add it to my todo list.
+
+    Tom: A bigger thing for me is making Wi-Fi testable from Lua, so that we
+    have all the bindings in place and we can ask for tests in Lua rather than
+    shell scripts which are going to fall apart.
+    
+- Cy
+
+    Someone submmited a pull request for WPA supplicant.
+
+- Li-Wen
+
+    Thanks Bjoern for updating the regdomain.  Things working great now in TW.
+    I can help the script and contact the regdb maintainer.
+
+    Still working on doc sending to AMD, including ask them to ask Mediatek to
+    share info with FreeBSD.
+
+    Any thoughts for setting up a wireless lab (for ci?) in Kitchener? Can
+    initialize it in hackathon after BSDCan.
+
+    Can check if my friend at Ubiquiti can stil help for some hardware (not sure
+    if it's useful).
+
+    enweiwu@ will be in BSDCan (for 2 days) and Hackathon (for 4 days).  wtap(4)
+    rebase and merge is one of the goals.
+
+## Discussion #6 - Wednesday, May 28, 2025 at 15:00 UTC
+
+- [ ] Adrian Chadd
+- [ ] Alvin Chen
+- [ ] Bjoern Zeeb
+- [ ] Cy Shubert
+- [ ] Ed Maste
+- [ ] Joe Mingrone
+- [ ] Li-Wen Hsu
+- [ ] Tom Jones
+
+### Action Items
+
+### Comments and Updates
+
+- Adrian
+
+- Alvin
+
+- Bjoern
+
+- Cy
+
+- Ed
+
+- Li-Wen
+
+- Tom
