@@ -483,14 +483,15 @@ Some useful places to start:
 
 ## Discussion #6 - Wednesday, May 28, 2025 at 15:00 UTC
 
-- [ ] Adrian Chadd
+- [x] Adrian Chadd
+- [x] Alice Sowerby
 - [ ] Alvin Chen
-- [ ] Bjoern Zeeb
-- [ ] Cy Shubert
-- [ ] Ed Maste
-- [ ] Joe Mingrone
-- [ ] Li-Wen Hsu
-- [ ] Tom Jones
+- [x] Bjoern Zeeb
+- [x] Cy Shubert
+- [x] Ed Maste
+- [x] Joe Mingrone
+- [x] Li-Wen Hsu
+- [x] Tom Jones
 
 ### Action Items
 
@@ -498,14 +499,40 @@ Some useful places to start:
 
 - Adrian
 
-- Alvin
+I started testing iwx and iwlwfifi again.  They both don't panic the kernel freqeuently, which is nice.  I've been doing general wifi stack cleanup.  I'm going to get back up to working on the transmit locking stuff.  I'm trying to encourage anyone interested to build that community up again.  i've been working on older qualcom atheros stuff... I've started working on the qualcom snapdragon laptop.  Hopefully as I bring up more of the AP support we'll have another vehicle for testing wifi AP testing.  I'm going to do a post about that.  There's a lot of work to do to test..
+
+Bjoern: Which generatoion?
+
+Adrian: I have.. and one of chip  As they get newer it starts to look like a cell phone chipset.
+
+bz: I'm asking because I still have f
 
 - Bjoern
+
+
 
 - Cy
 
 - Ed
 
 - Li-Wen
+    - testbed
+        - hardware?
+        - "Wireless Testbed" thread on May 6
+    - little clean up wtap(4) for upcoming merging work.
+    - minor side project: testing LLMs (openai's codex and Anthropic's claude4) with wtap(4) visibility plugin
 
 - Tom
+
+  I got suspend/resume working well in iwx.  I have to bring the interface up/down multiple times to get it to work.  It might be a wpa issue.
+  
+## Discussion #7
+
+- Li-Wen
+    - wireless testbed
+        - WIP for automatic testing after ci.freebsd.org
+        - https://hackmd.io/mP8LC4hnSNyObiPufrMcxg?view
+        - Intel AX210
+        - Intel 8xxx
+        - USB rtl8912 (cannot passthru due to only one usb controller)
+    - wlanstat(s)
