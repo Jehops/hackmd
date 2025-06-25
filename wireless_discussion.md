@@ -459,7 +459,7 @@ Some useful places to start:
     Tom: A bigger thing for me is making Wi-Fi testable from Lua, so that we
     have all the bindings in place and we can ask for tests in Lua rather than
     shell scripts which are going to fall apart.
-    
+
 - Cy
 
     Someone submmited a pull request for WPA supplicant.
@@ -495,21 +495,99 @@ Some useful places to start:
 
 ### Action Items
 
-### Comments and Updates
+#### Overview
+
+We discussed stable KBIs and breaking changes across versions 15 and 16, with
+consensus reached on implementing necessary changes without seeking user
+permission.  Wi-Fi support and driver development were discussed, including
+discussions about hardware compatibility, testing environments, and various
+driver improvements.
+
+- Tom
+
+    Got suspend and review working on iwx and that's in the tree.  It works
+    really well and it doesn't crash.  I sometimes have to bring the interface
+    up and down multiple times to get it to work.  Sometimes I can force a bunch
+    of UPD through it and it works.  Adrian suggested this might be a WPA issue.
+    Other than that, I think the iwx import work is done.  There are a few minor
+    issues, then we can start working on 160 MHz channels.
 
 - Adrian
 
-I started testing iwx and iwlwfifi again.  They both don't panic the kernel freqeuently, which is nice.  I've been doing general wifi stack cleanup.  I'm going to get back up to working on the transmit locking stuff.  I'm trying to encourage anyone interested to build that community up again.  i've been working on older qualcom atheros stuff... I've started working on the qualcom snapdragon laptop.  Hopefully as I bring up more of the AP support we'll have another vehicle for testing wifi AP testing.  I'm going to do a post about that.  There's a lot of work to do to test..
+    I started testing iwx and iwlwfifi again.  Hopefully I'll give feedback this
+    week.  They both don't panic the kernel frequently, which is nice.  I've
+    been doing general Wi-Fi stack cleanup.  I'm going to get back up to
+    cleaning up trasmit locking stuff.  I'm trying to encourage anyone
+    interested to build that community up again.  I've been working on older
+    qualcom atheros Wi-Fi stuff.  I've started working on the Qualcom Snapdragon
+    laptop.  That's important because a bunch of the later Qualcom Wi-Fi AP
+    chips started sharing code with the Snapsrap laptops.  Hopefully over the
+    next few months as I bring up more of the AP support we'll have another
+    vehicle for testing Wi-Fi AP testing.  I'm going to do a post about that.
+    Bjoern: Which Wi-Fi generation do you have now?
 
-Bjoern: Which generatoion?
+    adrian: I have all of it.  I got the Dakota, which is Wi-Fi 5 and I have one
+    of each chip after that.  The problem as you go further up, it starts
+    looking more like a cell phone chipset, which means I have a lot of drivers
+    to bring up before I can even turn on the ath11 knf 12k chipset, which I
+    don't mind doing, but it dovetails quickly.
 
-Adrian: I have.. and one of chip  As they get newer it starts to look like a cell phone chipset.
+    bjoern: I'm asking because I still have an old phone around and I do have ???
+    APs that I'm using, so I can help test.
 
-bz: I'm asking because I still have f
+    Adrian: Ok. Thanks.  I also did buy the first-gen Wi-Fi 5 ath10k AP chipset.
+    I bought a couple of PCI cards and my ath10k driver does do cascade, 4x4,
+    160 Mhz, and it does multi-user ?? mode.  I should really Finnish my ath10k
+    port.  I should finish my ath10k port, and I could probably build 160 mhz
+    4x4 AP today if I debugged that driver before.
+
+    tom: That would be nice.  I cannot get openwrt to do this.
+
+    adrian: It's a pain because as soon as you start speaking at 160 mhz, you
+    have to be absolutely certain that you choose a channel set that does not
+    overlap with DFS.
+
+    tom: I've got a lab.  The configuration that openwrt generates for hostapd
+    only does 80 mhz channel.  If I change anything it gives me a completely
+    broken AP.  We need a test target for 160.
+
+    adrian: I bought a 160 mhz dlink ap for testing.  Nothing done with it yet.
+
+    tom: I think my arrows?? should, but they don't.
+
+    adrian: arrows won't do 80 because they want more channels to do more mesh
+    with and 160 channels take up all the bandwidth and a higher noise ??
+
+    bz: ??
+
+    adrian: Finding a chipset that does 80/80 is difficult.
+
+    bz: I know wrt is able to do it.
+
+    tom: If it's HE80, it should do Vht160?
+
+    adrian: No.  It's the other way around.  If you're doing vht160 that implies the rest down the line.
+
+    tom: HE, not NT.  It's configured to do HE80.  If I change that, I don't get a working AP.
+
+    adrian: It may not let you do that. Send me the details.  I'll look at the
+    config.
+
+    ardian: I spent time trying to figure out how to build a flashable image for
+    my dlink AP.  The way that you have to it is to create multi-layer uboot
+    images where you take a uboot image and embed it inside a uboot image.....
+    It gets unpacked as you flash into the right partition.  It was an absolute
+    nightmare, but I know have all the basic pieces to flash a Qualcom platform.
+
+    adrian: GCMP hasn't land.  bz have you been able to test it.
+
+    bz: Yes, I did.
 
 - Bjoern
 
-
+    Let's start with GCMP.  The hardest part is getting FreeeBSD ?? ap working.
+    I have to recycle the interfaces??  It's something we should look into.
+    I've got GCMP working
 
 - Cy
 
@@ -522,11 +600,37 @@ bz: I'm asking because I still have f
     - little clean up wtap(4) for upcoming merging work.
     - minor side project: testing LLMs (openai's codex and Anthropic's claude4) with wtap(4) visibility plugin
 
-- Tom
+## Discussion #7 - Wednesday, June 25, 2025 at 15:00 UTC
 
-  I got suspend/resume working well in iwx.  I have to bring the interface up/down multiple times to get it to work.  It might be a wpa issue.
-  
-## Discussion #7
+- [ ] Adrian Chadd
+- [ ] Alice Sowerby
+- [ ] Alvin Chen
+- [ ] Bjoern Zeeb
+- [ ] Cy Shubert
+- [ ] Ed Maste
+- [ ] En-Wei Wu
+- [ ] Joe Mingrone
+- [ ] Li-Wen Hsu
+- [ ] Tom Jones
+
+### Action Items
+
+- [X] Bjoern to send email about breaking KBI for Wi-Fi improvements in FreeBSD 15 and 16.
+- [ ] Adrian to review Bjoern's email summary about Wi-Fi state machine issues and provide feedback based on his experience.
+- [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
+- [ ] Li-Wen to introduce Adrian to Framework laptop representatives for potential collaboration on EFI/BIOS issues.
+- [ ] Bjoern to create a wiki page for documenting minor Wi-Fi issues and known problems.
+
+
+### Comments and Updates
+
+- Adrian
+
+- Bjoern
+
+- Cy
+
+- En-Wei
 
 - Li-Wen
     - wireless testbed
@@ -536,3 +640,5 @@ bz: I'm asking because I still have f
         - Intel 8xxx
         - USB rtl8912 (cannot passthru due to only one usb controller)
     - wlanstat(s)
+
+- Tom
