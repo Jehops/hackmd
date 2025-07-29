@@ -594,13 +594,79 @@ driver improvements.
 - Ed
 
 - Li-Wen
-    - testbed
-        - hardware?
-        - "Wireless Testbed" thread on May 6
-    - little clean up wtap(4) for upcoming merging work.
-    - minor side project: testing LLMs (openai's codex and Anthropic's claude4) with wtap(4) visibility plugin
+  - wireless testbed
+    - WIP for automatic testing after ci.freebsd.org
+      - https://hackmd.io/mP8LC4hnSNyObiPufrMcxg?view
+      - Intel AX210
+      - Intel 8xxx
+      - USB rtl8912 (cannot passthru due to only one usb controller)
+    - wlanstat(s)
 
 ## Discussion #7 - Wednesday, June 25, 2025 at 15:00 UTC
+
+- [X] Adrian Chadd
+- [ ] Alice Sowerby
+- [ ] Alvin Chen
+- [X] Bjoern Zeeb
+- [X] Cy Shubert
+- [X] Ed Maste
+- [X] En-Wei Wu
+- [X] Joe Mingrone
+- [X] Li-Wen Hsu
+- [ ] Tom Jones
+
+### Action Items
+
+- [X] Bjoern to send email about breaking KBI for Wi-Fi improvements in FreeBSD 15 and 16.
+- [ ] Adrian to review Bjoern's email summary about Wi-Fi state machine issues and provide feedback based on his experience.
+- [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
+- [ ] Li-Wen to introduce Adrian to Framework laptop representatives for potential collaboration on EFI/BIOS issues.
+- [ ] Bjoern to create a wiki page for documenting minor Wi-Fi issues and known problems.
+- [ ] Adrian to write a wiki page for wireless regulatory domains topics
+
+### Comments and Updates
+
+- Adrian
+
+    We shouild clean up regulatory domain stuff for 16.
+
+- Bjoern
+    - For regulatory domain, we should change the default from FCC US.
+    - 14.3 "support fallout"  (one thing is regdomain)
+    - ACPI for LinuxKPI so that iwlwifi / rtw89 compile and can query
+    - HE (11ax) structs/defines  LinuxKPI -> net80211
+    - IE lists update + decoding in ifconfig
+    - Documentation updates (man pages, release notes for 15, ..)
+    - Merges to stable/14
+    - LinuxKPI scanning
+    - iwx bits
+    - RSSI / S:N, not sure yet if I want it this way or preserve signal
+    - LinuxKPI crypto bits
+    - RX path
+    - Looking into how to solve some of this in net80211 insead of working around in LinuxKPI
+    - Short amount to see if I can get mediatek FW to come alive
+    - Further LinuxKPI non-802.11 change to be upstreamed
+    - Looking at the PCI changes vs. drm-kmod again for suspend/resume
+    - I have reviews to do for LinuxKPI and net80211
+
+- Cy
+
+- En-Wei
+
+    - Rebase https://reviews.freebsd.org/D36243 on FreeBSD 15-CURRENT
+
+- Li-Wen
+    - wireless testbed
+      - WIP for automatic testing after ci.freebsd.org
+      - https://hackmd.io/mP8LC4hnSNyObiPufrMcxg?view
+      - Intel AX210
+      - Intel 8xxx
+      - USB rtl8912 (cannot passthru due to only one usb controller)
+    - wlanstat(s)
+
+- Tom
+
+## Discussion #8 - Wednesday, July 30, 2025 at 15:00 UTC
 
 - [ ] Adrian Chadd
 - [ ] Alice Sowerby
@@ -613,32 +679,31 @@ driver improvements.
 - [ ] Li-Wen Hsu
 - [ ] Tom Jones
 
+Review Action items from Discussion #7
+
 ### Action Items
-
-- [X] Bjoern to send email about breaking KBI for Wi-Fi improvements in FreeBSD 15 and 16.
-- [ ] Adrian to review Bjoern's email summary about Wi-Fi state machine issues and provide feedback based on his experience.
-- [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
-- [ ] Li-Wen to introduce Adrian to Framework laptop representatives for potential collaboration on EFI/BIOS issues.
-- [ ] Bjoern to create a wiki page for documenting minor Wi-Fi issues and known problems.
-
 
 ### Comments and Updates
 
-- Adrian
+- Adrian Chadd
 
-- Bjoern
+- Alice Sowerby
 
-- Cy
+    I was speaking with Ed the other day and he mentioned that it would be
+    helpful to have a public list of supported WiFi drivers somewhere. To
+    contain information such as Hardware type/driver/WiFi standards
+    supported. What do people think?  If liked, how do we plan to make the first
+    version and processes to keep it up to date, receive feedback and questions
+    etc.
 
-- En-Wei
+- Alvin Chen
 
-- Li-Wen
-    - wireless testbed
-        - WIP for automatic testing after ci.freebsd.org
-        - https://hackmd.io/mP8LC4hnSNyObiPufrMcxg?view
-        - Intel AX210
-        - Intel 8xxx
-        - USB rtl8912 (cannot passthru due to only one usb controller)
-    - wlanstat(s)
+- Bjoern Zeeb
 
-- Tom
+- Cy Shubert
+
+- En-Wei Wu
+
+- Li-Wen Hsu
+
+- Tom Jones
