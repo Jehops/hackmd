@@ -620,8 +620,9 @@ driver improvements.
 - [X] Bjoern to send email about breaking KBI for Wi-Fi improvements in FreeBSD 15 and 16.
 - [ ] Adrian to review Bjoern's email summary about Wi-Fi state machine issues and provide feedback based on his experience.
 - [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
-- [ ] Li-Wen to introduce Adrian to Framework laptop representatives for potential collaboration on EFI/BIOS issues.
-- [ ] Bjoern to create a wiki page for documenting minor Wi-Fi issues and known problems.
+
+
+- [x] Bjoern to create a wiki page for documenting minor Wi-Fi issues and known problems.
 - [ ] Adrian to write a wiki page for wireless regulatory domains topics
 
 ### Comments and Updates
@@ -666,26 +667,33 @@ driver improvements.
 
 - Tom
 
-## Discussion #8 - Wednesday, July 30, 2025 at 15:00 UTC
+## Discussion #8 - Wednesday, August 6, 2025 at 15:00 UTC
 
-- [ ] Adrian Chadd
+- [X] Adrian Chadd
 - [ ] Alice Sowerby
 - [ ] Alvin Chen
-- [ ] Bjoern Zeeb
-- [ ] Cy Shubert
-- [ ] Ed Maste
+- [X] Bjoern Zeeb
+- [X] Cy Shubert
+- [X] Ed Maste
 - [ ] En-Wei Wu
-- [ ] Joe Mingrone
-- [ ] Li-Wen Hsu
-- [ ] Tom Jones
+- [X] Joe Mingrone
+- [X] Li-Wen Hsu
+- [X] Tom Jones
 
 Review Action items from Discussion #7
 
 ### Action Items
 
+- [ ] Adrian to review Bjoern's email summary about Wi-Fi state machine issues and provide feedback based on his experience.
+- [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
+- [ ] Adrian to write a wiki page for wireless regulatory domains topics
+- [ ] Li-Wen to introduce Adrian to Framework laptop representatives for potential collaboration on EFI/BIOS issues.
+
 ### Comments and Updates
 
 - Adrian Chadd
+
+Life was busy.  Kept my diff stack up to date.  Been testing out 11ac AP mode to find corner cases, but haven't found anything that breaks the stack.
 
 - Alice Sowerby
 
@@ -696,14 +704,55 @@ Review Action items from Discussion #7
     version and processes to keep it up to date, receive feedback and questions
     etc.
 
-- Alvin Chen
-
+    bz: the release notes generated from man pages is the best we currently have:
+        https://www.freebsd.org/releases/14.3R/hardware/#wlan
+        
+    emaste: The wiki is not the right place.
+        
+    thj: There's https://bsd-hardware.info/?d=FreeBSD
+    bz: There's a wireless database at ???
+    
+    emaste: The Github repo for bsd-hardware.info is stale.  Some things stopped updating with FreeBSD 12.
+       
 - Bjoern Zeeb
+    - begrudged done installer fix for wifi/regdomain (sorry I don't like bsdinstall)
+    - Mediatek / PCI debugging; jhb helped; the card's PCI stack goes off to lunch on certain actions
+    - Suspend/resume for iwlwifi:
+        - the LinuxKPI framework works
+        - my test laptop (even without) no longer s/r properly (drm, wifi, other?)
+        - pulled in the latest USBDbc and applied fixes to help with first debugging; problem now, xhci gets suspended along and needs a "quirk" 
+    - TKIP Errata Notice for 14.3
+    - Found more edge cases in LinuxKPI and net80211 panics eating dogfood
+        - fixes in LinuxKPI
+        - had to turn bgscan off again until locking is fixed
+        - HT teardown is also a more constant source of panic
+        - adjusted MC updates in LKPI
+        - rx csum offloading would be nice but (a) we get a full frame csum now(?), and (b) there are data corruptions
+    - net80211 changes for ioctl code to drivers (D51399); pass vap (==ifp) instead ic
+    - Trying to sort more net80211 'tech debt' to undo LinuxKPI workarounds and move forward
+    - MFCs to stable/14
+    - Stabweek is done, working on flushing my tree; blocked on drm vs. LinuxKPI pci; PR out but likely need alternate solution
+    - Got an updated iwlwifi to match rtw8x and mt76 version
+    - Took time off to debug a cam/sdio problem so that I can try to get SDIO sorted
+    - Would love to update LinuxKPI/USB from last year and see if we can get the "breaking bits" in before 15 too?
+    - Would love to pull in Linux 6.16 drivers before 15?
+    - Funny throughput TCP RX funkyness; need to talk more to tuexen
+
+    - Has anyone figured out why the be200 doesn't work with the Framework?  The Framework will refuse to boot.
 
 - Cy Shubert
 
-- En-Wei Wu
+Plan on deprecating WPA supplicant 2.9 in ports and have it expire at the end of the year.
 
 - Li-Wen Hsu
 
+Wireless testbed is still a WIP.  The wlanstat(s) renaming patch will be ready for review soon.
+
 - Tom Jones
+
+Nothing on Wi-Fi lately.  Was debugging mesh and started updating net-mgmt/kismet port.  Are there other Wi-Fi tools that need updating?
+
+Adrian: Just kismet.
+
+
+## Discussion #9 - Wednesday, August 27, 2025 at 15:00 UTC
