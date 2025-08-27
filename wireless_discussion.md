@@ -756,3 +756,27 @@ Adrian: Just kismet.
 
 
 ## Discussion #9 - Wednesday, August 27, 2025 at 15:00 UTC
+
+- [ ] Adrian Chadd
+- [ ] Alice Sowerby
+- [ ] Alvin Chen
+- [ ] Bjoern Zeeb
+- [ ] Cy Shubert
+- [ ] Ed Maste
+- [ ] En-Wei Wu
+- [ ] Joe Mingrone
+- [ ] Li-Wen Hsu
+- [ ] Tom Jones
+
+### Action Items
+
+### Comments and Updates
+
+- Adrian Chadd
+- Alvin Chen
+- Bjoern Zeeb
+- Cy Shubert
+- En-Wei Wu
+- Li-Wen Hsu
+- Tom Jones
+- Anyone else
