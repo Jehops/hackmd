@@ -756,3 +756,69 @@ Adrian: Just kismet.
 
 
 ## Discussion #9 - Wednesday, August 27, 2025 at 15:00 UTC
+
+- [ ] Adrian Chadd
+- [x] Alice Sowerby
+- [ ] Alvin Chen
+- [ ] Bjoern Zeeb
+- [x] Cy Shubert
+- [x] Ed Maste
+- [ ] En-Wei Wu
+- [x] Joe Mingrone
+- [x] Li-Wen Hsu
+- [x] Tom Jones
+
+### Action Items
+
+- [ ] Li-Wen to introduce Adrian to Framework laptop representatives for potential collaboration on EFI/BIOS issues.
+- [ ] Li-Wen to find the notes about Framework's debug interface on desktop/12" models and point out for Tom
+- [ ] Li-Wen to finish the wlanstat(1) renaming patch
+- [ ] Adrian to review Bjoern's email summary about Wi-Fi state machine issues and provide feedback based on his experience.
+- [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
+- [ ] Adrian to write a wiki page for wireless regulatory domains topics
+- [ ] Tom will updte the WiFi wiki page with WiFi cards supported.
+
+### Comments and Updates
+
+- Alice Sowerby
+    - Can this group make regular checks and update the wiki page https://wiki.freebsd.org/WiFi/ with supported WiFi cards and workarounds.
+    - Also other info as needed to keep it useful and fresh.
+    - (Li-Wen) should we also work on https://www.freebsd.org/releases/15.0R/hardware/#wlan ?
+
+- Cy Shubert
+    - No wirless updates; dealing with Kerberos issues.
+
+- Li-Wen Hsu
+
+    * still working on the actions items
+    * Don't have too much updats, will try out single usb device bhyve passthuru in wifi testbed
+    * En-wei will start in Kitchener 2nd half next month
+    * OT: tried a little bit with Meshtastic/LoRa when working with local community, would be nice to be used on FreeBSD with bluetooth
+
+- Tom Jones
+ 
+    - Working on the kismet port.  Due to the state of pkg, there are many missing package depdendencies, which makes progress challenging.
+ 
+     - I was speaking to Framework today about debugging interfaces and they have enabled cpu uart on the ai 300,  framework 12 and framework desktops. This should enable low level debugging to resovle pcie bus and suspend issues. 
+     - I'm trying to help them debug, but I need more information on what the hardware is, what it should support or what the crashes are.
+ 
+## Discussion #10 - Wednesday, October 29, 2025 at 15:00 UTC
+
+Don't forget to record the meeting for Bjoern.
+
+- [ ] Adrian Chadd
+- [ ] Alice Sowerby
+- [ ] Alvin Chen
+- [ ] Bjoern Zeeb
+- [ ] Cy Shubert
+- [ ] Ed Maste
+- [ ] En-Wei Wu
+- [ ] Joe Mingrone
+- [ ] Li-Wen Hsu
+- [ ] Tom Jones
+
+### Action Items
+
+### Comments and Updates
+- Alice Sowerby/Ed Maste
+    - We would like to get suggestions to be added to a roadmap to go into 2026 for the Foundation's Laptop project.
