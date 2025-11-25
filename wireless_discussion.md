@@ -1,23 +1,45 @@
 # FreeBSD Wireless Monthly Discussions
 
+## Discussion #11 - Wednesday, November 26, 2025, at xx:00 UTC
+
+### Comments and Updates
+
+- Bjoern:
+  
+
 ## Discussion #10 - Wednesday, October 29, 2025 at 15:00 UTC
 
-Don't forget to record the meeting for Bjoern.
-
-- [ ] Adrian Chadd
-- [ ] Alice Sowerby
+- [x] Adrian Chadd
+- [x] Alice Sowerby
 - [ ] Alvin Chen
-- [ ] Bjoern Zeeb
-- [ ] Cy Shubert
-- [ ] Ed Maste
+- [x] Bjoern Zeeb
+- [x] Cy Shubert
+- [x] Ed Maste
 - [ ] En-Wei Wu
-- [ ] Joe Mingrone
-- [ ] Li-Wen Hsu
-- [ ] Tom Jones
+- [x] Joe Mingrone
+- [x] Li-Wen Hsu
+- [x] Tom Jones
 
 ### Action Items
 
+- [ ] Adrian to review Bjoern's email summary about Wi-Fi state machine issues and provide feedback based on his experience.
+- [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
+- [ ] Adrian to write a wiki page for wireless regulatory domains topics
+
 ### Comments and Updates
+
+- Li-Wen:
+    - Bjoern, does the call for testing include the MediaTek card?
+No.
+Ed: We're hoping olce will do some LinuxKPI work to support the mt76.
+    - en-wei is working with us since last week and one of the first things is rebase pending wtap(4) patches.
+        - future work: stable interface of wtapctl(8) and push to main
+        - future work: adding features like signal strength and distance.
+
+- Adrian:
+
+
+
 - Alice Sowerby/Ed Maste
     - We would like to get suggestions to be added to a roadmap to go into 2026 for the Foundation's Laptop project.
 
@@ -36,13 +58,13 @@ Don't forget to record the meeting for Bjoern.
 
 ### Action Items
 
-- [ ] Li-Wen to introduce Adrian to Framework laptop representatives for potential collaboration on EFI/BIOS issues.
-- [ ] Li-Wen to find the notes about Framework's debug interface on desktop/12" models and point out for Tom
-- [ ] Li-Wen to finish the wlanstat(1) renaming patch
+- [x] Li-Wen to introduce Adrian to Framework laptop representatives for potential collaboration on EFI/BIOS issues.
+- [x] Li-Wen to find the notes about Framework's debug interface on desktop/12" models and point out for Tom
+- [x] Li-Wen to finish the wlanstat(1) renaming patch
 - [ ] Adrian to review Bjoern's email summary about Wi-Fi state machine issues and provide feedback based on his experience.
 - [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
 - [ ] Adrian to write a wiki page for wireless regulatory domains topics
-- [ ] Tom will updte the WiFi wiki page with WiFi cards supported.
+- [x] Tom will update the WiFi wiki page with WiFi cards supported.
 
 ### Comments and Updates
 
