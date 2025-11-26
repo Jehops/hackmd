@@ -1,11 +1,21 @@
 # FreeBSD Wireless Monthly Discussions
 
-## Discussion #11 - Wednesday, November 26, 2025, at xx:00 UTC
+## Discussion #11 - Wednesday, November 26, 2025, at 16:00 UTC
+
+- [ ] Adrian Chadd
+- [ ] Alice Sowerby
+- [ ] Alvin Chen
+- [ ] Bjoern Zeeb
+- [ ] Cy Shubert
+- [ ] Ed Maste
+- [ ] En-Wei Wu
+- [ ] Joe Mingrone
+- [ ] Li-Wen Hsu
+- [ ] Tom Jones
+
+### Action Items
 
 ### Comments and Updates
-
-- Bjoern:
-  
 
 ## Discussion #10 - Wednesday, October 29, 2025 at 15:00 UTC
 
@@ -26,22 +36,65 @@
 - [ ] Adrian to look into the Wi-Fi compliance test bench interface and share findings with the team.
 - [ ] Adrian to write a wiki page for wireless regulatory domains topics
 
+
+We reviewed the action items from the previous meeting.
+Li-Wen committed the wlanstat(1) renaming patch.
+Adrian still has a few items pending since he was sick last month.
+
 ### Comments and Updates
 
-- Li-Wen:
-    - Bjoern, does the call for testing include the MediaTek card?
-No.
-Ed: We're hoping olce will do some LinuxKPI work to support the mt76.
-    - en-wei is working with us since last week and one of the first things is rebase pending wtap(4) patches.
-        - future work: stable interface of wtapctl(8) and push to main
-        - future work: adding features like signal strength and distance.
+#### Li-Wen
 
-- Adrian:
+Li-Wen asks Bjoern whether the call for testing includes the MediaTek card?
+It does not.
 
+Discussions about whether the MeditTek card works in Linux.
+It does with a newer kernel.
+Daniel from Framework is using Fedora.
 
+Ed mentions the new Framework he'll soon be getting.
+He has to order components.
+We're hoping olce will do some LinuxKPI work to support the mt76.
 
-- Alice Sowerby/Ed Maste
-    - We would like to get suggestions to be added to a roadmap to go into 2026 for the Foundation's Laptop project.
+En-wei is working with us since last week and one of the first things is rebase pending wtap(4) patches.
+Future work:
+    - stable interface of wtapctl(8) and push to main
+    - future work: adding features like signal strength and distance.
+
+#### Adrian
+
+George sent me a Framework laptop to try out some of the bootloader speed issues on, and I've been testing on other laptops.
+I've got to do the Frameworks laptop this week before I hand it off to Colin, but I do have a laptop here.
+I think I know what the problem is and what the solution needs to be.
+
+Joe: For the slow bootloader, you should coordinate with Thomas Soome, if you already haven't.
+He also has a good idea what the problem is and what needs to be done.
+I committed a temporary workaround for the Frameowork 16.
+Bjoern found a corner case that it doesn't help, though.
+
+Some bioses map the frame buffer region as non-cacheable, which turns every memory access into a slow memory transfer.
+I've got some local patches.
+Framework should just fix their BIOS to make the video frame buffer cached.
+
+Adrian has made progress on the encryption cleanup and the packet encryption API documentation.
+I want to introduce the MFP crypto keys, even though they don't do anything.
+I want to at least get the APIs brought up, but if I want to add two more keys to the list, a whole lot of code will get very sad, because it sometimes it'll think that those keys are valid, normal, unicast keys, so it's forcing me to go do a cleanup.
+Hopefully I can get the rest of the key cleanup stuff done, early November, and then I can introduce the, MFP key API, so that I don't know if anyone's noticed, but, every time that you start WPA Supplicant, it complains that two key IDs are invalid.
+
+#### Tom
+
+No Wi-Fi updates from Tom.
+
+#### Bjoern
+
+I got the driver updates in.
+I gave a talk at EuroBSDCon.
+There's an RTW89 issue that I will fix for the release.
+I'm doing 11AC for RealTek, and the MediaTek driver.
+I hope to coordinate the NetBSD people and talk about reducing the 802.11 diff.
+
+#### Alice Sowerby/Ed Maste
+We would like to get suggestions to be added to a roadmap to go into 2026 for the Foundation's Laptop project.
 
 ## Discussion #9 - Wednesday, August 27, 2025 at 15:00 UTC
 
