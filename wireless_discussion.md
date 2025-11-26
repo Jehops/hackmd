@@ -17,6 +17,14 @@
 
 ### Comments and Updates
 
+#### Adrian
+
+#### Bjoern
+
+#### Li-Wen
+
+#### Tom
+
 ## Discussion #10 - Wednesday, October 29, 2025 at 15:00 UTC
 
 - [x] Adrian Chadd
